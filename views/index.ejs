@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon.ico">
+    <title>Miniblog</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/base.css">
+</head>
+
+<body>
+    <div class="container" id="app">
+        <!-- 遮罩层 -->
+        <div id="mask" v-show='mask'>
+            <div class="loginBox">
+                <span class="close" v-on:click='closeLoginBox'>×</span>
+                <form role="form" method="post" action="/dologin">
+                    <div class="form-group col-lg-12">
+                        <label for="name">用户名</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="请输入用户名">
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label for="password">密码</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="请输入密码">
+                    </div>
+                    <div style="text-align: center;">
+                        <button type="submit" class="btn btn-success">登录</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="header clearfix">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <% if (!login) {%>
+                    <li role="presentation" class="active"><a href="javascript:;" v-on:click='showMask'>登录</a></li>
+                    <li role="presentation"><a href="/doregist">注册</a></li>
+                    <% } else {%>
+                    <li role="presentation" class="active" style="margin-top: 20px;"><%=username%>,欢迎你</li>
+                    <% } %>
+                </ul>
+            </nav>
+            <h3 class="text-muted"><a href="/" class="gray_a">BlOG</a></h3>
+        </div>
+        <div class="jumbotron">
+            <h1>Jumbotron heading</h1>
+            <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+            <p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a></p>
+        </div>
+        <div class="row marketing">
+            <div class="col-lg-6">
+                <h4>Subheading</h4>
+                <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+                <h4>Subheading</h4>
+                <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+                <h4>Subheading</h4>
+                <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+            </div>
+            <div class="col-lg-6">
+                <h4>Subheading</h4>
+                <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+                <h4>Subheading</h4>
+                <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
+                <h4>Subheading</h4>
+                <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+            </div>
+        </div>
+        <footer class="footer">
+            <p>&copy; 2018 By Nero.</p>
+        </footer>
+    </div>
+</body>
+<script type="text/javascript" src="/js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/vue.min.js"></script>
+<script type="text/javascript" src="/js/vue-resource.js"></script>
+<script type="text/javascript" src="/js/base.js"></script>
+
+</html>

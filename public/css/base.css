@@ -1,0 +1,40 @@
+#mask {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.4);
+  width: 1170px;
+  height: 100%;
+  z-index: 999;
+}
+.loginBox {
+  position: absolute;
+  background: #fff;
+  width: 300px;
+  height: 300px;
+  top: 50%;
+  left: 50%;
+  margin-top: -150px;
+  margin-left: -150px;
+  border-radius: 5px;
+}
+.close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+.loginBox form {
+  margin: 0 auto;
+  width: 250px;
+  height: 250px;
+  padding-top: 30px;
+}
+.loginBox button {
+  width: 150px;
+  margin-top: 10px;
+}
+.gray_a {
+  color: #808080;
+  text-decoration: none;
+}
+.gray_a:hover {
+  text-decoration: none;
+}

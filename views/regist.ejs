@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/favicon.ico">
+    <title>Miniblog</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/css/regist.css">
+</head>
+
+<body>
+    <div class="container" id="app">
+        <!-- 遮罩层 -->
+        <div id="mask" v-show='mask'>
+            <div class="loginBox">
+                <span class="close" v-on:click='closeLoginBox'>×</span>
+                <form role="form" method="post" action="/dologin">
+                    <div class="form-group col-lg-12">
+                        <label for="name">用户名</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="请输入用户名">
+                    </div>
+                    <div class="form-group col-lg-12">
+                        <label for="password">密码</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="请输入密码">
+                    </div>
+                    <div style="text-align: center;">
+                        <button type="submit" class="btn btn-success">登录</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="header clearfix">
+            <nav>
+                <ul class="nav nav-pills pull-right">
+                    <li role="presentation"><a href="javascript:;" v-on:click='showMask'>已有账号，马上登录</a></li>
+                </ul>
+            </nav>
+            <h3 class="text-muted"><a href="/" class="gray_a">BlOG</a></h3>
+        </div>
+        <div class="jumbotron">
+            <form role="form" method="post" action="/regist">
+                <div class="container">
+                    <div class="row">
+                        <div class="form-group col-lg-12">
+                            <label for="regist_name">用户名</label>
+                            <input type="text" class="form-control" id="regist_name" name="regist_name" placeholder="请输入用户名" required="required" v-model='regist_name'>
+                        </div>
+                        <div class="form-group col-lg-12">
+                            <label for="regist_password">密码</label>
+                            <input type="password" class="form-control" id="regist_password" name="regist_password" placeholder="请输入密码" required="required" v-model='regist_password'>
+                        </div>
+                        <div class="form-group col-lg-12">
+                            <label for="regist_password02">请再次输入密码</label>
+                            <input type="password" class="form-control" id="regist_password02" name="regist_password02" placeholder="请再次输入密码" required="required" v-model='regist_password02'>
+                        </div>
+                        <div style="text-align: center;">
+                            <button type="button" class="btn btn-success" v-on:click='post'>注册</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <span>{{msg}}</span>
+        </div>
+        <footer class="footer">
+            <p>&copy; 2018 By Nero.</p>
+        </footer>
+    </div>
+</body>
+<script type="text/javascript" src="/js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="/js/vue.min.js"></script>
+<script type="text/javascript" src="/js/vue-resource.js"></script>
+<script type="text/javascript" src="/js/base.js"></script>
+
+</html>
