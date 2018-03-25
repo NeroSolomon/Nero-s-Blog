@@ -38,3 +38,10 @@
 .gray_a:hover {
   text-decoration: none;
 }
+.blogArticle {
+  box-shadow: 5px 5px 5px #ccc;
+}
+.footer {
+  position: relative;
+  bottom: 0;
+}

@@ -11,6 +11,7 @@
     <title>Miniblog</title>
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
 </head>
 
 <body>
@@ -48,26 +49,29 @@
             <h3 class="text-muted"><a href="/" class="gray_a">BlOG</a></h3>
         </div>
         <div class="jumbotron">
-            <h1>Jumbotron heading</h1>
-            <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-            <p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a></p>
+            <% if(login) {%>
+                <img src="/images/touxiang.jpg" id="headPic">
+                <ul class="menu nav nav-pills nav-stacked">
+                    <li role="presentation" class="active"><a href="/showMyBlog/<%=username%>">我的博客</a></li>
+                    <li role="presentation"><a href="/myPlan">我的计划</a></li>
+                    <li role="presentation"><a href="/hotBlog">热门博客</a></li>
+                    <li role="presentation"><a href="/chatRoom">聊天室</a></li>
+                </ul>
+            <% }else { %>
+                <h1>Nero's blog</h1>
+                <p class="lead">马上注册一个账号来使用这个个人博客吧~</p>
+                <p class="lead">它能记录下你成长的经历和生活的点滴~也能认识很多有趣的朋友</p>
+                <p><a class="btn btn-lg btn-success" href="javascript:;" v-on:click='showMask'>Sign up today</a></p>
+            <% } %>
         </div>
         <div class="row marketing">
-            <div class="col-lg-6">
+            <div class="col-lg-6 blogArticle">
                 <h4>Subheading</h4>
                 <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
-                <h4>Subheading</h4>
-                <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
-                <h4>Subheading</h4>
-                <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-6 blogArticle">
                 <h4>Subheading</h4>
                 <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
-                <h4>Subheading</h4>
-                <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
-                <h4>Subheading</h4>
-                <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
             </div>
         </div>
         <footer class="footer">

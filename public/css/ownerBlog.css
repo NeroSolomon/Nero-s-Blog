@@ -1,0 +1,12 @@
+.borderR {
+  border-radius: 50%;
+}
+img[src='/images/touxiang.jpg'] {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.marketing {
+  margin-top: 50px;
+  min-height: 600px;
+}

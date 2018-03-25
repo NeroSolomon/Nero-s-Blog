@@ -24,6 +24,12 @@ app.post('/dologin', router.dologin);
 app.get('/doregist', router.dorigist);
 // 注册用户
 app.post('/regist', router.rigist);
+// 跳转到我的博客
+app.get('/showMyBlog/:username', router.showMyBlog);
+// 写博客
+app.get('/writeBlog/:username', router.writeBlog);
+// 发布博客
+app.post('/postBlog', router.postBlog);
 
 // 监听3000端口
 app.listen(3000);

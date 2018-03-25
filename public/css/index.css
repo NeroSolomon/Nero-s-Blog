@@ -1,0 +1,11 @@
+.jumbotron {
+  overflow: hidden;
+}
+#headPic {
+  float: left;
+}
+.menu {
+  float: left;
+  list-style: none;
+  margin-left: 50px;
+}
