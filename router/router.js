@@ -95,3 +95,14 @@ exports.postBlog = function (req, res, next) {
 		})
 	})
 }
+// 得到自己的所有博客
+exports.getBlog = function (req, res, next) {
+	var username = req.query.username;
+	db.find('article', {username: username}, function (err, result) {
+		if (err) {
+			res.send('-2'); // 服务器错误
+		}else {
+			res.send(result);
+		}
+	})
+}

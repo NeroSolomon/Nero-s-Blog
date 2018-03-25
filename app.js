@@ -30,6 +30,8 @@ app.get('/showMyBlog/:username', router.showMyBlog);
 app.get('/writeBlog/:username', router.writeBlog);
 // 发布博客
 app.post('/postBlog', router.postBlog);
+// 展示自己所有的博客
+app.get('/getBlog', router.getBlog);
 
 // 监听3000端口
 app.listen(3000);

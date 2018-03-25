@@ -4,13 +4,12 @@ new Vue({
 		return {
 			title: '',
 			article: '',
-			username: '',
 			status: false
 		}
 	},
 	methods: {
 		post: function () {
-			var username = this.$refs.username.innerText;
+			var username = document.getElementById('username').innerHTML;
 			this.$http.post('/postBlog', {
 				username: username,
 				title: this.title,
