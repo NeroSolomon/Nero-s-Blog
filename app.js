@@ -32,6 +32,8 @@ app.get('/writeBlog/:username', router.writeBlog);
 app.post('/postBlog', router.postBlog);
 // 展示自己所有的博客
 app.get('/getBlog', router.getBlog);
+// 分页展示博客
+app.get('/showPage', router.showPage);
 
 // 监听3000端口
 app.listen(3000);

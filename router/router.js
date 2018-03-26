@@ -106,3 +106,15 @@ exports.getBlog = function (req, res, next) {
 		}
 	})
 }
+// 分页展示所有博客
+exports.showPage = function (req, res, next) {
+	var username = req.query.username;
+	var page = parseInt(req.query.page);// 将字符串转换成整数
+	db.find('article', {username: username}, {"pageamount":10,"page":page}, function(err, result) {
+		if (err) {
+			res.send('-2'); // 服务器错误
+		}else {
+			res.send(result);
+		}
+	})
+}
