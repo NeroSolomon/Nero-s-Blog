@@ -34,6 +34,17 @@ app.post('/postBlog', router.postBlog);
 app.get('/getBlog', router.getBlog);
 // 分页展示博客
 app.get('/showPage', router.showPage);
-
+// 跳转到热门博客
+app.get('/hotBlog', router.hotBlog);
+// 请求所有热门博客
+app.get('/getHotBlog', router.getHotBlog);
+// 分页请求所有热门博客
+app.get('/showHotPage', router.showHotPage);
+// 跳转到我的计划页面
+app.get('/myPlan', router.toMyPlan);
+// 得到我的计划
+app.get('/getMyPlan', router.getMyPlan);
+// 存储我的计划
+app.post('/savePlan', router.savePlan);
 // 监听3000端口
 app.listen(3000);

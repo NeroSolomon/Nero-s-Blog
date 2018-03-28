@@ -118,3 +118,61 @@ exports.showPage = function (req, res, next) {
 		}
 	})
 }
+// 跳转到热门博客页面
+exports.hotBlog = function (req, res, next) {
+	if (req.session.login !== '1') {
+		res.redirect('/'); // 没有登陆不能访问
+	}else {
+		res.render('hotBlog', {
+        "username": req.session.login == '1' ? req.session.username : ""
+    	});
+	}
+}
+// 请求所有热门博客
+exports.getHotBlog = function (req, res, next) {
+	db.find('article', {}, function (err, result) {
+		if (err) {
+			res.send('-2'); // 服务器错误
+		}else {
+			res.send(result);
+		}
+	})
+}
+// 分页请求所有热门博客
+exports.showHotPage = function (req, res, next) {
+	var page = parseInt(req.query.page);// 将字符串转换成整数
+	db.find('article', {}, {"pageamount":10,"page":page}, function(err, result) {
+		if (err) {
+			res.send('-2'); // 服务器错误
+		}else {
+			res.send(result);
+		}
+	})
+}
+// 跳转到我的计划
+exports.toMyPlan = function (req, res, next) {
+	if (req.session.login !== '1') {
+		res.redirect('/'); // 没有登陆不能访问
+	}else {
+		res.render('myPlan', {
+        "username": req.session.login == '1' ? req.session.username : ""
+    	});
+	}
+}
+// 得到我的计划
+exports.getMyPlan = function (req, res, next) {
+	db.find('plans', {username: req.session.username}, function(err, result) {
+		if (err) {
+			res.send('-2'); // 服务器错误
+		}else {
+			res.send(result);
+		}
+	})
+}
+// 存储我的计划
+exports.savePlan = function (req, res, next) {
+	var form = new formidable.IncomingForm();
+	form.parse(req, function (err, fields, files) {
+		console.log(fields);
+	})
+}
