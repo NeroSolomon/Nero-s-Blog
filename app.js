@@ -46,5 +46,7 @@ app.get('/myPlan', router.toMyPlan);
 app.get('/getMyPlan', router.getMyPlan);
 // 存储我的计划
 app.post('/savePlan', router.savePlan);
+// 跳转到聊天室
+app.get('/chatRoom', router.toChatRoom);
 // 监听3000端口
 app.listen(3000);

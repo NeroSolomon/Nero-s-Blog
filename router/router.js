@@ -2,6 +2,16 @@ var formidable = require('formidable'); // 导入表单上传工具
 var gm = require('gm'); // 导入图片处理工具
 var db = require('./../models/db.js');// 导入数据库DAO层
 var md5 = require('./../models/md5.js'); // 导入md5加密模块
+//创建一个io对象
+var io = require('socket.io')(server);
+//监听连接事件
+io.on("connection",function(socket){
+	console.log("1个客户端连接了");
+	socket.on("tiwen",function(msg){
+		console.log("本服务器得到了一个提问" + msg);
+		socket.emit("huida","吃了");
+	});
+});
 // 显示首页
 exports.showIndex = function (req, res, next) {
 	res.render('index', {
@@ -173,6 +183,47 @@ exports.getMyPlan = function (req, res, next) {
 exports.savePlan = function (req, res, next) {
 	var form = new formidable.IncomingForm();
 	form.parse(req, function (err, fields, files) {
-		console.log(fields);
+		db.find('plans', {username: req.session.username}, function(err, result) {
+			if (err) {
+				res.send('-2'); // 服务器错误
+			}else {
+				if (result.length === 0) {// 还没有计划时插入一个文档
+					db.insertOne('plans', {
+						username: req.session.username,
+						plans: fields.items
+					}, function(err, result) {
+						if (err) {
+							res.send('-2');
+						}else {
+							res.send('1');
+						}
+					})
+				}else {// 有计划时更新文档
+					db.updateMany('plans', {
+						username: req.session.username
+					},{
+						$set: {
+							plans: fields.items
+						}
+					}, function(err, result) {
+						if (err) {
+							res.send('-2');
+						}else {
+							res.send('1');
+						}
+					})
+				}
+			}
+		});
 	})
+}
+// 跳转到聊天室
+exports.toChatRoom = function (req, res, next) {
+	if (req.session.login !== '1') {
+		res.redirect('/'); // 没有登陆不能访问
+	}else {
+		res.render('chatRoom', {
+        "username": req.session.login == '1' ? req.session.username : ""
+    	});
+	}
 }
