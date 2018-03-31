@@ -11,8 +11,7 @@
     <title>Miniblog</title>
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="/css/base.css">
-    <link rel="stylesheet" type="text/css" href="/css/ownerBlog.css">
-    <link rel="stylesheet" type="text/css" href="/css/writeBlog.css">
+    <link rel="stylesheet" type="text/css" href="/css/regist.css">
 </head>
 
 <body>
@@ -31,22 +30,22 @@
             </nav>
             <h3 class="text-muted"><a href="/" class="gray_a"><%=username%>'s BlOG</a></h3>
         </div>
-        <div class="row marketing">
-            <div class="panel panel-info" v-show='!status'>
-              <div class="panel-heading">
-                <input type="text" name="title" id="title" autofocus="true" placeholder="请输入您的博客标题" v-model='title' required>
-                <input type="button" name="submit" id="submit" value="发布" class="pull-right btn btn-success" v-on:click='post'>
-              </div>
-              <div class="panel-body">
-                <textarea v-model='article' required></textarea>
-              </div>
-            </div>
-            <div class="alert alert-success" role="alert" v-show='status'>
-                <strong>Well done!</strong> You successfully read this important alert message.
-            </div>
+        <div class="jumbotron">
+            <form role="form" method="post" action="/saveMes" enctype="multipart/form-data">
+                <div class="container">
+                    <div class="row">
+                        <div class="form-group col-lg-12">
+                            <label for="headPic">头像</label>
+                            <input type="file" class="form-control" id="headPic" name="headPic" placeholder="请输入用户名">
+                        </div>
+                        <div style="text-align: center;">
+                            <button type="submit" class="btn btn-success">保存</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
         <footer class="footer">
-            <p ref='username' style="visibility: hidden;" id="username"><%=username%></p>
             <p>&copy; 2018 By Nero.</p>
         </footer>
     </div>
@@ -55,6 +54,5 @@
 <script type="text/javascript" src="/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/js/vue.min.js"></script>
 <script type="text/javascript" src="/js/vue-resource.js"></script>
-<script type="text/javascript" src="/js/writeBlog.js"></script>
 
 </html>

@@ -20,8 +20,12 @@
         <div class="header clearfix">
             <nav>
                 <ul class="nav nav-pills pull-right">
-                    <li role="presentation" class="active" style="margin-top: 20px;">
-                        <img src="/images/touxiang.jpg">
+                    <li role="presentation" class="active" style="margin-top: 3px;">
+                        <% if(headPic) {%>
+                            <img src="/images/<%=headPic%>" id="headPic">
+                        <% }else { %>
+                            <img src="/images/touxiang.png" id="headPic">
+                        <% } %>
                     </li>
                 </ul>
             </nav>
@@ -39,7 +43,7 @@
 <script type="text/javascript" src="/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/js/vue.min.js"></script>
 <script type="text/javascript" src="/js/vue-resource.js"></script>
-<script type="text/javascript" src="/js/chatRoom.js"></script>
+<!-- <script type="text/javascript" src="/js/chatRoom.js"></script> -->
 <script type="text/javascript" src="/socket.io/socket.io.js"></script>
 
 </html>

@@ -2,7 +2,9 @@ var express = require('express'); // 导入express框架
 var app = express();
 var router = require('./router/router.js'); // 导入路由模块
 var session = require('express-session'); // 导入session模块
-
+var server = require('http').Server(app);
+// 使用socket.io
+var io = require('socket.io')(server);
 //使用session
 app.use(session({
     secret: 'keyboard cat',
@@ -18,6 +20,10 @@ app.use(express.static('./public'));
 
 // 当路由为'/'时
 app.get('/', router.showIndex);
+//监听连接事件
+io.on("connection",function(socket){
+	console.log("1个客户端连接了");
+});
 // 登录
 app.post('/dologin', router.dologin);
 // 跳转到注册页面
@@ -48,5 +54,9 @@ app.get('/getMyPlan', router.getMyPlan);
 app.post('/savePlan', router.savePlan);
 // 跳转到聊天室
 app.get('/chatRoom', router.toChatRoom);
+// 跳转到更新资料页面
+app.get('/changeMes', router.toPersonalMes);
+// 保存资料
+app.post('/saveMes', router.saveMes);
 // 监听3000端口
-app.listen(3000);
+server.listen(3000);

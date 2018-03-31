@@ -1,8 +1,10 @@
 .jumbotron {
   overflow: hidden;
 }
-#headPic {
+#indexHeadPic {
   float: left;
+  width: 240px;
+  height: 240px;
 }
 .menu {
   float: left;

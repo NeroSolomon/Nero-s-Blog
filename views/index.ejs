@@ -43,6 +43,7 @@
                     <li role="presentation"><a href="/doregist">注册</a></li>
                     <% } else {%>
                     <li role="presentation" class="active" style="margin-top: 20px;"><%=username%>,欢迎你</li>
+                    <li role="presentation" style="margin-top: 10px;"><a href="/changeMes">修改资料</a></li>
                     <% } %>
                 </ul>
             </nav>
@@ -50,7 +51,11 @@
         </div>
         <div class="jumbotron">
             <% if(login) {%>
-                <img src="/images/touxiang.jpg" id="headPic">
+                <% if(headPic) {%>
+                    <img src="/images/<%=headPic%>" id="indexHeadPic">
+                <% }else { %>
+                    <img src="/images/touxiang.png" id="indexHeadPic">
+                <% } %>
                 <ul class="menu nav nav-pills nav-stacked">
                     <li role="presentation" class="active"><a href="/showMyBlog/<%=username%>">我的博客</a></li>
                     <li role="presentation"><a href="/myPlan">我的计划</a></li>
